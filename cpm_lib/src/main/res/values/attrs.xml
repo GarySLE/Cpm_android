@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ChaosPolygonViewWrapper">
+        <attr name="polygonSides" format="integer|dimension" />
+        <attr name="polygonRotation" format="float|dimension" />
+        <attr name="polygonScale" format="float|dimension" />
+        <attr name="polygonCornerRadius" format="float|dimension" />
+        <attr name="polygonStrokeColor" format="color|reference" />
+        <attr name="polygonFillColor" format="color|reference" />
+    </declare-styleable>
+</resources>

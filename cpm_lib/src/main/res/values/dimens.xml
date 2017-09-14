@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stroke_width">2dp</dimen>
+    <dimen name="previewseekbar_indicator_width">10dp</dimen>
+    <dimen name="previewseekbar_thumb_offset">10dp</dimen>
+
+    <dimen name="video_preview_width">100dp</dimen>
+    <dimen name="video_preview_height">56dp</dimen>
+    <dimen name="video_frame_width">2dp</dimen>
+</resources>

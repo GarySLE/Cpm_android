@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopOfTopViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="5dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottomOfTopViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="50dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopOfBottomViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="50dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottomOfBottomViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="5dp" />
+        <!--底图-->
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+        <!--加载动画-->
+        <LinearLayout
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp"
+            tools:visibility="visible">
+
+            <ProgressBar
+                style="@android:style/Widget.Material.Light.ProgressBar.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <!--改变播放位置-->
+        <LinearLayout
+            android:id="@+id/changePosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_4"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guidelineBottomOfTopViews"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="75dp"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/changePositionCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textSize="28sp" />
+
+            <ProgressBar
+                android:id="@+id/changePositionProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                android:progressDrawable="@drawable/pb_change" />
+        </LinearLayout>
+        <!--改变亮度-->
+        <LinearLayout
+            android:id="@+id/changeBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_4"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="75dp"
+            tools:visibility="visible">
+
+            <com.ys.cpm.lib.VerticalProgressBar
+                android:id="@+id/changeBrightnessProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="2dp"
+                android:layout_height="100dp"
+                android:max="100"
+                android:progressDrawable="@drawable/pb_change" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_palyer_brightness" />
+        </LinearLayout>
+        <!--改变声音-->
+        <LinearLayout
+            android:id="@+id/changeVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_4"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="75dp"
+            tools:visibility="visible">
+
+            <com.ys.cpm.lib.VerticalProgressBar
+                android:id="@+id/changeVolumeProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="2dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                android:progressDrawable="@drawable/pb_change" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_palyer_volume" />
+        </LinearLayout>
+        <!--播放完成-->
+        <LinearLayout
+            android:id="@+id/completed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#6c0b0b0b"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:id="@+id/replay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_player_replay"
+                android:drawablePadding="4dp"
+                android:padding="8dp"
+                android:text="重新播放"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <!--播放错误-->
+        <LinearLayout
+            android:id="@+id/error"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="播放错误，请重试。"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_retry"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="点击重试"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/backButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="5dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfTopViews"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guidelineTopOfTopViews"
+            app:polygonCornerRadius="10"
+            app:polygonRotation="20"
+            app:polygonSides="6"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/backIcon"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_player_back" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+        <!--电池电量-->
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/batteryAndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfTopViews"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfTopViews"
+            app:polygonCornerRadius="10"
+            app:polygonSides="8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="75dp">
+
+                <ImageView
+                    android:id="@+id/battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/battery_100" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    tools:text="00:00" />
+            </LinearLayout>
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/titleWrapper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:minHeight="30dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfTopViews"
+            app:layout_constraintLeft_toRightOf="@+id/backButton"
+            app:layout_constraintRight_toLeftOf="@+id/batteryAndTime"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfTopViews"
+            app:polygonCornerRadius="10"
+            app:polygonSides="6">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:ellipsize="middle"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                tools:text="Title" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/fullScreenButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfBottomViews"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfBottomViews"
+            app:polygonCornerRadius="10"
+            app:polygonRotation="20"
+            app:polygonSides="6">
+
+            <ImageView
+                android:id="@+id/fullScreenIcon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/full_screen_enter" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/sizeChangeButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfBottomViews"
+            app:layout_constraintRight_toLeftOf="@+id/fullScreenButton"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfBottomViews"
+            app:polygonCornerRadius="10"
+            app:polygonRotation="20"
+            app:polygonSides="6">
+
+            <ImageView
+                android:id="@+id/sizeChangeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/size_change" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/screenshotButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfBottomViews"
+            app:layout_constraintRight_toLeftOf="@+id/sizeChangeButton"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfBottomViews"
+            app:polygonCornerRadius="10"
+            app:polygonRotation="20"
+            app:polygonSides="6">
+
+            <ImageView
+                android:id="@+id/screenshotIcon"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/screenshot" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/playPauseButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfBottomViews"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfBottomViews"
+            app:polygonCornerRadius="10"
+            app:polygonRotation="50"
+            app:polygonSides="6">
+
+            <ImageView
+                android:id="@+id/playPauseIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/play" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@null"
+            android:max="100"
+            android:maxHeight="1.5dp"
+            android:minHeight="1.5dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            style="@android:style/Widget.Material.Light.SeekBar"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomOfBottomViews"
+            app:layout_constraintLeft_toRightOf="@+id/playPauseButton"
+            app:layout_constraintRight_toLeftOf="@+id/screenshotButton"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopOfBottomViews" />
+
+        <com.ys.cpm.lib.ChaosPolygonViewWrapper
+            android:id="@+id/lengthWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintRight_toRightOf="@+id/seekBar"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar"
+            app:polygonCornerRadius="10"
+            app:polygonSides="6">
+
+            <TextView
+                android:id="@+id/length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                tools:text="00:00" />
+        </com.ys.cpm.lib.ChaosPolygonViewWrapper>
+
+        <!--<com.ys.cpm.lib.preview.PreviewSeekBarLayout-->
+        <!--android:id="@id/previewSeekBarLayout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/playPauseButton"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent">-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@id/previewFrameLayout"-->
+        <!--android:layout_width="@dimen/video_preview_width"-->
+        <!--android:layout_height="@dimen/video_preview_height"-->
+        <!--android:background="@drawable/video_frame"-->
+        <!--android:padding="@dimen/video_frame_width">-->
+
+        <!--<com.ys.cpm.lib.ChaosPlaybackMasterImpl-->
+        <!--android:id="@id/previewPlayView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+        <!--</FrameLayout>-->
+
+        <!--<com.ys.cpm.lib.preview.PreviewSeekBar-->
+        <!--android:id="@id/seekBar"-->
+        <!--style="?android:attr/progressBarStyleHorizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/previewFrameLayout"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:max="800"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:progressTint="@color/colorPrimary"-->
+        <!--android:thumbTint="@color/colorPrimary"-->
+        <!--app:paddingStart="10dp" />-->
+
+        <!--</com.ys.cpm.lib.preview.PreviewSeekBarLayout>-->
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
