@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ChaosPlayMaster</string>
+    <string name="file_is_exist">文件已存在</string>
 </resources>
